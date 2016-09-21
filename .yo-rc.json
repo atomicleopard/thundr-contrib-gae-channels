@@ -1,0 +1,7 @@
+{
+  "generator-thundr-module": {
+    "name": "thundr-contrib-gae-channels",
+    "javaVersion": "7",
+    "pkg": "com.atomicleopard.thundr.gae.channels"
+  }
+}
