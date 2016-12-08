@@ -20,6 +20,12 @@ package com.atomicleopard.thundr.gae.channels;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This interface defines the API for managing channel tokens for users.
+ * 
+ * Read more about clientId and token <a href="https://cloud.google.com/appengine/docs/java/channel/">here</a>
+ *
+ */
 public interface ChannelTokenStore {
 	public void store(String username, String clientId);
 

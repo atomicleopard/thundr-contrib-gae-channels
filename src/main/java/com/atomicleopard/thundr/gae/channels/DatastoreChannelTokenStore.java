@@ -64,9 +64,7 @@ public class DatastoreChannelTokenStore implements ChannelTokenStore {
 		ofy().delete().type(ChannelToken.class).id(clientId).now();
 	}
 
-	private static final CollectionTransformer<ChannelToken, String> ToUsername = Expressive.Transformers.transformAllUsing(Expressive.Transformers.<ChannelToken, String> toProperty("username",
-			ChannelToken.class));
-	private static final CollectionTransformer<ChannelToken, String> ToId = Expressive.Transformers.transformAllUsing(Expressive.Transformers.<ChannelToken, String> toProperty("id",
-			ChannelToken.class));
+	private static final CollectionTransformer<ChannelToken, String> ToId = Expressive.Transformers
+			.transformAllUsing(Expressive.Transformers.<ChannelToken, String> toProperty("id", ChannelToken.class));
 	private static final ETransformer<Collection<ChannelToken>, Map<String, List<ChannelToken>>> ToUsernameLookup = Expressive.Transformers.toBeanLookup("username", ChannelToken.class);
 }

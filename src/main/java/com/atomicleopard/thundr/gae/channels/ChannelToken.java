@@ -22,6 +22,9 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
+/**
+ * Stores a link between a specific user and a specific channel
+ */
 @Cache
 @Entity
 public class ChannelToken {

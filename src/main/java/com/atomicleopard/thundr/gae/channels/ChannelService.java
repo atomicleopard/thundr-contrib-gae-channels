@@ -36,17 +36,30 @@ import com.threewks.thundr.session.Session;
 import com.threewks.thundr.session.SessionService;
 import com.threewks.thundr.transformer.TransformerManager;
 import com.threewks.thundr.user.User;
-import com.threewks.thundr.user.gae.UserGae;
 import com.threewks.thundr.view.View;
 import com.threewks.thundr.view.ViewResolverRegistry;
+import com.threewks.thundr.view.json.JsonView;
 
+/**
+ * The ChannelService allows content to be sent to specific users connected
+ * via a <a href="https://cloud.google.com/appengine/docs/java/channel/">GAE channel</a>.
+ * 
+ * A channel must be created for a user session by calling {@link #createChannel(User, Session)} or {@link #createChannel(User, Session, int)}.
+ * 
+ * After one or more channels exist, a user will receive the payload rendered by supplying a view to {@link #send(View, List)}.
+ * Typically this would be a {@link JsonView}, but any other view type supported by your application will work.
+ *
+ * The {@link ChannelModule} will handle creation and removal of channel session for you by wiring up the {@link ChannelController}.
+ */
 public class ChannelService {
 	private com.google.appengine.api.channel.ChannelService service;
 	private ViewResolverRegistry viewResolverRegistry;
 	private ChannelTokenStore channelTokenStore;
 	private TransformerManager transformerManager;
+	@SuppressWarnings("rawtypes")
 	private SessionService sessionService;
 
+	@SuppressWarnings("rawtypes")
 	public ChannelService(com.google.appengine.api.channel.ChannelService service, ViewResolverRegistry viewResolverRegistry, ChannelTokenStore channelTokenStore,
 			TransformerManager transformerManager, SessionService sessionService) {
 		super();
@@ -94,6 +107,7 @@ public class ChannelService {
 		return service.createChannel(id.toString(), durationMinutes);
 	}
 
+	@SuppressWarnings("unchecked")
 	protected <U extends User> List<Session> findSessions(List<U> users) {
 		Map<U, List<Session>> sessions = sessionService.listSessions(users);
 		return Expressive.flatten(sessions.values());
