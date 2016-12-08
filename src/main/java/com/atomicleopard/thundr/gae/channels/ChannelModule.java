@@ -22,7 +22,15 @@ import com.googlecode.objectify.ObjectifyService;
 import com.threewks.thundr.injection.BaseModule;
 import com.threewks.thundr.injection.UpdatableInjectionContext;
 import com.threewks.thundr.route.Router;
+import com.threewks.thundr.user.User;
 
+/**
+ * Sets up a thundr abstraction on <a href="https://cloud.google.com/appengine/docs/java/channel/">channels</a>
+ * using thundr-user and thundr-gae-user.
+ * 
+ * Channels can be established by invoking <code>/channel/create</code>, after which payloads can be sent using the {@link ChannelService} to a specific {@link User}.
+ *
+ */
 public class ChannelModule extends BaseModule {
 	@Override
 	public void configure(UpdatableInjectionContext injectionContext) {

@@ -17,6 +17,14 @@
  */
 package com.atomicleopard.thundr.gae.channels;
 
+import com.threewks.thundr.view.json.JsonView;
+
+/**
+ * {@link ChannelEvent} is a structured object to help normalise
+ * content sent via channel to the client. It simply is a categorised payload,
+ * and will be serialised if wrapped in a {@link JsonView} (or other data view)
+ * when {@link ChannelService#send(com.threewks.thundr.view.View, com.threewks.thundr.user.User...)} is called.
+ */
 public class ChannelEvent {
 	protected String type;
 	protected Object content;

@@ -19,8 +19,6 @@ package com.atomicleopard.thundr.gae.channels;
 
 import static com.atomicleopard.expressive.Expressive.map;
 
-import javax.inject.Inject;
-
 import com.threewks.thundr.logger.Logger;
 import com.threewks.thundr.session.Session;
 import com.threewks.thundr.user.controller.Authenticated;
